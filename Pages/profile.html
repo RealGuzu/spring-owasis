@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Spring Owasis</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/index.html" class="logo">Spring Owasis</a>
+        <div class="nav-icons">
+            <div class="nav-icon search-icon" title="Search"></div>
+            <a href="/Pages/shop.html" class="nav-icon shop-icon" title="Shop"></a>
+            <a href="/Pages/profile.html" class="nav-icon profile-icon" title="Profile"></a>
+            <a href="/Pages/cart.html" class="nav-icon cart-icon" title="Cart">
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Not Logged In State -->
+    <section id="not-logged-in" class="auth-prompt" style="display: none;">
+        <div class="prompt-box">
+            <div class="prompt-icon">👤</div>
+            <h2>Please Sign In</h2>
+            <p>You need to be logged in to view your profile</p>
+            <a href="/Pages/login.html" class="prompt-btn">Sign In / Create Account</a>
+        </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section id="profile-content" class="profile-section">
+        <div class="profile-container">
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-picture-container">
+                    <img id="profile-picture" src="" alt="Profile Picture">
+                    <label for="picture-upload" class="picture-upload-btn">📷</label>
+                    <input type="file" id="picture-upload" accept="image/*" style="display: none;">
+                </div>
+                <div class="profile-info">
+                    <h1 id="user-name">User Name</h1>
+                    <p id="user-email">user@email.com</p>
+                    <p id="member-since">Member since: January 2025</p>
+                </div>
+                <button id="logout-btn" class="logout-btn">Sign Out</button>
+            </div>
+
+            <!-- Profile Tabs -->
+            <div class="profile-tabs">
+                <button class="tab-btn active" data-tab="personal">Personal Info</button>
+                <button class="tab-btn" data-tab="address">Address</button>
+                <button class="tab-btn" data-tab="payment">Payment Methods</button>
+                <button class="tab-btn" data-tab="orders">Order History</button>
+            </div>
+
+            <!-- Personal Info Tab -->
+            <div id="personal-tab" class="tab-content active">
+                <h2>Personal Information</h2>
+                <form id="personal-form" class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your email" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+1 (876) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob">
+                        </div>
+                    </div>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Address Tab -->
+            <div id="address-tab" class="tab-content">
+                <h2>Delivery Address</h2>
+                <form id="address-form" class="profile-form">
+                    <div class="form-group">
+                        <label for="street">Street Address</label>
+                        <input type="text" id="street" placeholder="123 Main Street">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" placeholder="Kingston">
+                        </div>
+                        <div class="form-group">
+                            <label for="parish">Parish</label>
+                            <select id="parish">
+                                <option value="">Select Parish</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                                <option value="Portland">Portland</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="postal-code">Postal Code</label>
+                        <input type="text" id="postal-code" placeholder="JMAAW01">
+                    </div>
+                    <div class="form-group">
+                        <label for="delivery-instructions">Delivery Instructions</label>
+                        <textarea id="delivery-instructions" rows="3"
+                            placeholder="Gate code, landmark, etc."></textarea>
+                    </div>
+                    <button type="submit" class="save-btn">Save Address</button>
+                </form>
+            </div>
+
+            <!-- Payment Tab -->
+            <div id="payment-tab" class="tab-content">
+                <h2>Payment Methods</h2>
+                <div id="payment-list" class="payment-list"></div>
+                <button id="add-payment-btn" class="add-btn">+ Add Payment Method</button>
+
+                <div id="payment-form-container" class="payment-form-container" style="display: none;">
+                    <h3>Add New Card</h3>
+                    <form id="payment-form" class="profile-form">
+                        <div class="form-group">
+                            <label for="card-name">Name on Card</label>
+                            <input type="text" id="card-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19"
+                                required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Expiry Date</label>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv">CVV</label>
+                                <input type="text" id="card-cvv" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="cancel-payment" class="cancel-btn">Cancel</button>
+                            <button type="submit" class="save-btn">Save Card</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div id="orders-tab" class="tab-content">
+                <h2>Order History</h2>
+                <div id="orders-list" class="orders-list">
+                    <div class="empty-state">
+                        <p>No orders yet</p>
+                        <a href="/Pages/shop.html" class="shop-link">Start Shopping</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-col brand-info">
+                <a href="/index.html" class="logo footer-logo">Spring Owasis</a>
+                <p class="tagline">Hydration with the drinker's best interest at heart.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">TW</a>
+                </div>
+            </div>
+            <div class="footer-col nav-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/Pages/shop.html">Shop Water</a></li>
+                    <li><a href="/Pages/about.html">About Us</a></li>
+                    <li><a href="/index.html#faq">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-info">
+                <h3>Contact</h3>
+                <p>Email: info@springowasis.com</p>
+                <p>Phone: (123) 456-7890</p>
+                <address>123 Blue Mountain Peak Rd,<br>Kingston, Jamaica</address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Spring Owasis Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/scripts/profile.js"></script>
+</body>
+
+</html>

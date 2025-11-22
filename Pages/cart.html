@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Spring Owasis</title>
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/index.html" class="logo">Spring Owasis</a>
+        <div class="nav-icons">
+            <div class="nav-icon search-icon" title="Search"></div>
+            <a href="/Pages/shop.html" class="nav-icon shop-icon" title="Shop"></a>
+            <div class="nav-icon profile-icon" title="Profile"></div>
+            <a href="/Pages/cart.html" class="nav-icon cart-icon" title="Cart">
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="cart-container">
+
+        <h1>Your Cart</h1>
+
+        <!-- Cart Items (will be populated by JavaScript) -->
+        <div class="cart-items">
+            <!-- Items will be dynamically loaded here -->
+        </div>
+
+        <!-- Summary -->
+        <div class="cart-summary">
+            <h3>Order Summary</h3>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>$0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span>$0</span>
+            </div>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <span>$0</span>
+            </div>
+
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+
+    </section>
+
+    <script src="/scripts/cart.js"></script>
+</body>
+
+</html>
